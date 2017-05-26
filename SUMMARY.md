@@ -5,4 +5,5 @@
 * [排序算法](sort-algorithm.md)
 * [Sed 的使用](how-to-use-sed.md)
 * [Awk 的使用](how-to-use-awk.md)
+* [Vim 的使用](how-to-use-vim.md)
 
