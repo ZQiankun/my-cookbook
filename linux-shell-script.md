@@ -100,6 +100,57 @@
 16. 实时查看某个目录下最新改动的文件
 
     `watch -d -n 1 'df; ls -FlAt /path'`
+    
+17. 执行一条命令但不保存到history中
+
+    空格 + command
+    
+18. 显示当前目录中所有子目录的大小
+
+    `du -h --max-depth=1`
+    
+19. 显示消耗内存最多的10个运行中的进程
+
+    `ps aux | soet -nk +4 | tail`
+    
+20. 查看ASCII码表
+
+    `man 7 ascii`
+    
+    > 通过 `man man`可以查询很多有用的信息及使用说明
+    
+21. 简易计时器
+
+    `time command`
+    
+22. 在一个shell中运行命令
+
+    （command） 或者 \`command\`
+    
+23. 清空屏幕
+
+    CTRL + l  或者 tput clear
+    
+    > tput sc 存储光标位置
+    > tput rc 恢复光标位置
+    > tput ed 清除当前位置到行尾的内容
+    
+24. 快速地知道服务器重启完成
+
+    `ping -a ip`
+    
+    > 此为ping命令Audible ping参数的一个用法，在ping通后会有声音输出。
+    
+25. 查询ANSI color对应值
+
+    `dircolors -p`
+    
+    > 这个颜色值可以用于设置字符及背景颜色，如 `echo -e "\e[1;31m XXXX\e[0m"`
+    
+26. 输入密码时不显示内容
+
+    
+    
 
 
 
