@@ -149,18 +149,13 @@
     
 26. 输入密码时不显示内容
 
-    ```shell
+    ```
     #!/bin/sh
-    
     echo -e "Enter password:"
     stty -echo
     read password
     stty echo
     ```
-
-```
-
-```
 
 
 
