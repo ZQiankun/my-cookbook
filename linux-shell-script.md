@@ -65,9 +65,9 @@
     
 10. 重置终端
 
-    `reset`
-    
-    > 一般cat了一个二进制文件会造成终端显示大量乱码，没法回显，此时可以通过该命令进行恢复。
+    `> filename`
+
+     > 一般cat了一个二进制文件会造成终端显示大量乱码，没法回显，此时可以通过该命令进行恢复。
     
 11. 在午夜时执行命令
 
@@ -80,14 +80,22 @@
     `mount -t tmpfs -o size-1024m tmpfs /mnt/ram`
     
 13. 用diff对比远程文件和本地文件
-
-    ```
-    nihao
+    
     ```
     ssh user@host cat /path/to/remotefile | diff /path/to/localfile -
-    
-    
     ```
+    
+14. 查看系统中占用端口的进程
+
+    `netstat -tulnp`
+    
+    > netstat是常用的用来查看linux网络系统的工具之一，其中-t显示tcp链接信息；-u显示udp链接信息；-l显示监听状态端口；-n直接显示ip；-p显示相应的进程PID。
+    
+ 15. 更友好地显示当前挂载的文件系统
+ 
+      `mount | column -t`
+      
+       > column 用于把输出结果进行列表格式化操作。 
     
 
 
