@@ -9,4 +9,5 @@
 * [排序算法](sort-algorithm.md)
 * [链表操作](how-to-process-a-list.md)
 * [网络编程](network-programming.md)
+* [使用inotify监控文件变更](inotify-monitor-file-change.md)
 
