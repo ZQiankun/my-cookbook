@@ -161,6 +161,9 @@
 
     `awk '!a[$0]++'`
 
+28. 列出最常用的10条命令
+
+    `history | awk '{a[$2]++}END{for(i in a){print a[i] "_" i}}' | sort -rn | head`
 
 
 
