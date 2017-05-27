@@ -42,12 +42,11 @@
    @reboot    @yearly（@annually）    @monthly     @weekly     @daily      @midnight      @hourly
 
    以上可以替他crontab配置基本格式的前五个字段，如@hourly command
+   
+   **/etc/cron.d/**：类似于/etc/crontab总的配置，不过/etc/cron.d中添加的配置需要重启crond服务才能生效，而/etc/crontab中更新的配置则不需要重启服务。corn.d中的配置文件权限必须为644，且属主为root；
+   **/etc/cron.daily/**：运行时需要每天执行一次的脚本；
+   **/etc/cron.hourly/**：运行时需要每小时执行一次的脚本
 
-   | 目录 | 描述 |
-   | :---: | :---: |
-   | /etc/cron.d/ | 类似于/etc/crontab总的配置，不过/etc/cron.d中添加的配置需要重启crond服务才能生效，而/etc/crontab中更新的配置则不需要重启服务。corn.d中的配置文件权限必须为644，且属主为root |
-   | /etc/cron.daily/ | 运行时需要每天执行一次的脚本 |
-   | /etc/cron.hourly/ | 运行时需要每小时执行一次的脚本 |
 
 ## at 命令用法
 
