@@ -60,11 +60,12 @@
 
 2. **时间格式**
 
-   * HH:MM              ex: 04:00
-   * HH:MM YYYY-MM-DD          ex：04:00 2017-05-20
-   * HH:MM \[am\|pm\]\[Month\]\[Date\]          ex：04am March 17
-   * HH:MM \[am\|pm\] + number \[minutes\|hours\|days\|weeks\]    ex： now+5minutes  or  04pm+2days
-
+    ```
+   HH:MM              04:00
+   HH:MM YYYY-MM-DD      04:00 2017-05-20
+   HH:MM \[am\|pm\]\[Month\]\[Date\]     04am March 17
+   HH:MM \[am\|pm\] + number \[minutes\|hours\|days\|weeks\]    now+5minutes  or  04pm+2days
+    ```
 
 3. **at的运行方式**
 
