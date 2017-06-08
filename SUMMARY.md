@@ -12,4 +12,5 @@
 * [Inotify 监控文件变更](inotify-monitor-file-change.md)
 * [Cron 介绍及使用](cron-introduction.md)
 * [At 介绍及使用](at-introduction-and-usage.md)
+* [科学上网](surfing-internet-without-gfw.md)
 
