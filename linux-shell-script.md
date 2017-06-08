@@ -4,8 +4,6 @@
 
 > 主要以bash (bourne again shell)作为默认的shell环境进行说明
 
-
-
 shell 脚本通常是一个以shebang起始的文本文件，如`#!/bin/bash`。shebang是一个文本行即`#!`，其位于解析器`/bin/bash`之前。该部分的解析是由内核处理。
 
 
