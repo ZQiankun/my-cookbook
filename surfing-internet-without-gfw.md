@@ -47,21 +47,36 @@
 
    * 启动ss 客户端
 
-     ` sslocal -c /etc/shadowsocks.json`
+     以root权限执行` sslocal -c /etc/shadowsocks.json`
 
-     若要在开机时自启动，在 /etc/xdg/autostart/ 下创建desktop文件 shadowsocks-autostart.desktop即可。
+     ~~若要在开机时自启动，在 /etc/xdg/autostart/ 下创建desktop文件 shadowsocks-autostart.desktop即可。~~
+
+     添加一个系统服务，如 /usr/lib/systemd/system/shadowsocks.service
 
      ```
-     [Desktop Entry]
-     Type=Application
-     Name=SS Daemon
-     Name[zh_CN]=SS 守护程序   
-     Exec=sslocal -c /etc/shadowsocks.json -d start
-     OnlyShowIn=GNOME;
-     NoDisplay=true
-     X-GNOME-Autostart-Notify=true
-     X-GNOME-AutoRestart=true
+     [Unit]
+     Description=Shadowsocks local service
+     After=syslog.target
+
+     [Service]
+     Type=forking
+     ExecStart=/usr/bin/shadowsocks-autostart.sh
+
+     [Install]
+     WantedBy=graphical.target
      ```
+
+     shadowsocks-autostart.sh 如下：
+
+     ```
+     #!/bin/sh
+
+     sslocal -c /etc/shadowsocks.json -d start
+     ```
+
+     然后执行 `systemctl enable shadowsocks.service`
+
+
 
    * 配置浏览器
 
