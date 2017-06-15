@@ -2,9 +2,168 @@
 
 ## 基本知识点
 
-> 主要以bash (bourne again shell)作为默认的shell环境进行说明
+> 主要以bash (bourne again shell)作为默认shell进行说明
 
 shell 脚本通常是一个以shebang起始的文本文件，如`#!/bin/bash`。shebang是一个文本行即`#!`，其位于解析器`/bin/bash`之前。该部分的解析是由内核处理。
+
+###终端打印
+
+**echo终端打印不带引号、单引号及双引号使用的区别**：
+
+* 不带引号
+
+  ```
+  echo $PATH;$PATH   
+  ```
+
+  由于命令是通过换行符及分号来分割，所以";"会被识别为分割符，输出如下：
+
+  ```
+  /usr/lib64/ccache:/sbin:/bin:/usr/sbin:/usr/bin
+  bash: /usr/lib64/ccache:/sbin:/bin:/usr/sbin:/usr/bin: No such file or directory
+  ```
+
+
+* 单引号
+
+  ```
+  echo '$PATH;$PATH'
+  ```
+
+  一些特殊字符及变量将不会被解析，作为字符串打印，输出如下：
+
+  ```
+  $PATH;$PATH
+  ```
+
+* 双引号
+
+  ```
+  echo "$PATH;$PATH" 
+  ```
+
+  输出如下：
+
+  ```
+  /usr/lib64/ccache:/sbin:/bin:/usr/sbin:/usr/bin;/usr/lib64/ccache:/sbin:/bin:/usr/sbin:/usr/bin
+  ```
+
+**echo输出颜色设置**
+
+echo显示带颜色，需要使用参数-e 
+格式如下:
+echo -e "\033[字背景颜色;文字颜色m字符串\033[0m"
+
+> 其中“\033”可以用“\e”替换使用
+
+例如: 
+echo -e "\033[41;37m TonyZhang \033[0m"
+其中41的位置代表底色, 37的位置是代表字的颜色
+
+ 注：
+1、字背景颜色和文字颜色之间是英文的分号；
+2、文字颜色后面有个m；
+3、字符串前后可以没有空格，如果有的话，输出也是同样有空格；
+
+例子：
+
+```
+echo -e "\033[30m 黑色字 \033[0m"
+echo -e "\033[31m 红色字 \033[0m"
+echo -e "\033[32m 绿色字 \033[0m"
+echo -e "\033[33m 黄色字 \033[0m"
+echo -e "\033[34m 蓝色字 \033[0m"
+echo -e "\033[35m 紫色字 \033[0m"
+echo -e "\033[36m 天蓝字 \033[0m"
+echo -e "\033[37m 白色字 \033[0m"
+
+echo -e "\033[40;37m 黑底白字 \033[0m"
+echo -e "\033[41;37m 红底白字 \033[0m"
+echo -e "\033[42;37m 绿底白字 \033[0m"
+echo -e "\033[43;37m 黄底白字 \033[0m"
+echo -e "\033[44;37m 蓝底白字 \033[0m"
+echo -e "\033[45;37m 紫底白字 \033[0m"
+echo -e "\033[46;37m 天蓝底白字 \033[0m"
+echo -e "\033[47;30m 白底黑字 \033[0m"
+```
+
+控制选项说明 ：
+
+```
+\033[0m 关闭所有属性 
+\033[1m 设置高亮度 
+\033[4m 下划线 
+\033[5m 闪烁 
+\033[7m 反显 
+\033[8m 消隐 
+\033[30m -- \033[37m 设置前景色 
+\033[40m -- \033[47m 设置背景色 
+\033[nA 光标上移n行 
+\033[nB 光标下移n行 
+\033[nC 光标右移n行 
+\033[nD 光标左移n行 
+\033[y;xH设置光标位置 
+\033[2J 清屏 
+\033[K 清除从光标到行尾的内容 
+\033[s 保存光标位置 
+\033[u 恢复光标位置 
+\033[?25l 隐藏光标 
+\033[?25h 显示光标 
+```
+
+**printf**
+
+printf是另一个可以用于终端打印的命令，它使用的参数和C语言中的printf函数一样。printf并不像echo命令一样会自动添加换行符，我们必须在需要的时候手动添加。
+
+
+###输入文件到文本
+
+**echo **
+
+```
+#!/bin/sh
+
+echo "\    
+I
+Love
+you
+more
+than
+I
+can
+say" > test-file
+```
+
+cat test-file 输出如下:
+
+```
+I
+Love
+you
+more
+than
+I
+can
+say
+```
+
+**cat**
+
+```
+[root@kickstart ~]# cat > love.txt << EOF
+> i love you
+> i love you so much 
+> i love you with all my heart
+> EOF
+注：用EOF退出编辑状态；
+
+[root@kickstart ~]# cat love.txt 
+i love you
+i love you so much 
+i love you with all my heart
+```
+
+
 
 
 
@@ -26,7 +185,7 @@ shell 脚本通常是一个以shebang起始的文本文件，如`#!/bin/bash`。
 
    `:w ! sudo tee %`
 
-   > 在vim中命令`:w!{cmd}可以让vim执行一个外部命令。%为vim中一个只读寄存器的名字，总保存着当前编辑文件的文件路径。`
+   > 在vim中命令`:w !{cmd}可以让vim执行一个外部命令。%为vim中一个只读寄存器的名字，总保存着当前编辑文件的文件路径。`
 
 4. 切回上一个目录
 
